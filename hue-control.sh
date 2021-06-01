@@ -16,7 +16,7 @@ y=$(bc <<< "scale=3; 0.342 + "${rgb[0]}" * -0.034 + "${rgb[1]}" * 0.358 + "${rgb
 curl -s -X PUT --data '{"xy":['"$x"', '"$y"']}' --url <YOUR BRIDGE IP>/api/<YOUR USER ID>/groups/1/action > /dev/null;
 #turns all lights in group 1 to the given rgb color
 
-echo -e "\nenter brightness (1-254): " | tr -d '\n'
+echo -e "enter brightness (1-254): " | tr -d '\n'
 #asks user to enter possible brightness
 
 read brightness
