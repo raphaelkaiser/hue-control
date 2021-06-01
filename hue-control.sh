@@ -19,8 +19,16 @@ curl -s -X PUT --data '{"xy":['"$x"', '"$y"']}' --url <YOUR BRIDGE IP>/api/<YOUR
 echo -e "enter brightness (1-254): " | tr -d '\n'
 #asks user to enter possible brightness
 
-read brightness
+read input
 #reads the input brightness
+
+if [ $input -eq 0 ]
+then 
+    brightness=$input
+else
+    brightness=$(bc <<< "$input * 25 + 4")
+fi
+#converts the given value from 0-10 into a brightness from 0-254
 
 curl -s -X PUT --data '{"bri":'$brightness'}' --url <YOUR BRIDGE IP>/api/<YOUR USER ID>/groups/1/action > /dev/null;
 #turn all lamps to input brightness
